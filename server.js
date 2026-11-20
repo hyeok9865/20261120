@@ -7,6 +7,7 @@ const responseFile = path.join(root, 'responses.json');
 function readResponses() { try { return JSON.parse(fs.readFileSync(responseFile, 'utf8')); } catch { return []; } }
 function send(res, status, type, body) { res.writeHead(status, {'Content-Type': type + '; charset=utf-8'}); res.end(body); }
 
+const port = Number(process.env.PORT) || 3000;
 http.createServer((req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
   if (req.method === 'POST' && url.pathname === '/api/responses') {
@@ -42,4 +43,4 @@ http.createServer((req, res) => {
   if (!file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) return send(res, 404, 'text/plain', 'Not found');
   const type = file.endsWith('.js') ? 'application/javascript' : file.endsWith('.css') ? 'text/css' : 'text/html';
   send(res, 200, type, fs.readFileSync(file));
-}).listen(3000, () => console.log('Open http://localhost:3000'));
+}).listen(port, () => console.log(`Open http://localhost:${port}`));
