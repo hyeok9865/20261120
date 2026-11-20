@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>게이밍 마우스 구매가치 분석 | 기말 프로젝트</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><a class="brand" href="#top">MOUSE<span>/</span>LAB</a><nav><a href="#data">DATA</a><a href="#analysis">ANALYSIS</a><a href="#model">MODEL</a><a href="#experiment">EXPERIMENT</a></nav><a class="cta" href="#experiment">실험 참여하기</a></header>
+  <main id="top">
+    <section class="hero slide">
+      <p class="eyebrow">FINAL PROJECT · 2026.11.20</p>
+      <h1>게이밍 마우스,<br><em>무엇이 가격을 만드는가</em></h1>
+      <p class="lede">18개 제품의 공개 사양과 공식 판매가를 분석하고, 제품 설명 방식이 구매 의도에 미치는 영향을 A/B 실험으로 검증한다.</p>
+      <div class="hero-metrics"><div><b id="nMice">18</b><span>제품 표본</span></div><div><b id="avgPrice">$--</b><span>평균 MSRP</span></div><div><b id="wirelessRate">--%</b><span>무선 비율</span></div></div>
+      <a class="down" href="#data">01. 데이터부터 보기 ↓</a>
+    </section>
+
+    <section id="data" class="slide section">
+      <p class="eyebrow">01 / DATA COLLECTION</p><h2>재현 가능한 기준으로<br>시장을 작은 데이터셋으로 만들다.</h2>
+      <div class="two-col"><div class="body-copy"><p>제조사 공식 제품 페이지에서 <strong>무게, 연결 방식, 배터리, 최대 폴링레이트, DPI, 그립 형태, 공식 MSRP</strong>를 수집했다.</p><p>할인 가격과 쇼핑몰 리뷰는 수집 시점·판매처별 변동이 커서 제외했다. 가격은 미국 공식 MSRP(USD)이며, 국내 실판매가나 판매량을 뜻하지 않는다.</p></div><div class="protocol"><span>COLLECTION PROTOCOL</span><b>18</b><p>2026.11.20 수집<br>공식 제조사 사양 기준</p></div></div>
+      <div class="source-list"><a href="https://www.logitechg.com/" target="_blank">Logitech G ↗</a><a href="https://www.razer.com/gaming-mice" target="_blank">Razer ↗</a><a href="https://steelseries.com/gaming-mice" target="_blank">SteelSeries ↗</a><a href="https://www.corsair.com/" target="_blank">Corsair ↗</a><a href="https://hyperx.com/" target="_blank">HyperX ↗</a><span>+ ASUS · Glorious · ZOWIE · Endgame Gear</span></div>
+      <details><summary>수집 데이터 전체 보기</summary><div class="table-wrap"><table><thead><tr><th>제품</th><th>브랜드</th><th>MSRP</th><th>무게</th><th>연결</th><th>배터리</th><th>Polling</th></tr></thead><tbody id="dataRows"></tbody></table></div></details>
+    </section>
+
+    <section id="analysis" class="slide section dark">
+      <p class="eyebrow">02 / EXPLORATORY ANALYSIS</p><h2>고가 제품은 더 가볍고,<br>더 빠른 연결을 제공한다.</h2>
+      <div class="insight-grid"><article><span>01</span><h3 id="insightWireless">무선 프리미엄</h3><p id="insightWirelessText"></p></article><article><span>02</span><h3 id="insightWeight">초경량 세그먼트</h3><p id="insightWeightText"></p></article><article><span>03</span><h3>해석의 경계</h3><p>표본은 대표 제품 중심의 소표본이다. 가격 차이는 브랜드, 출시 시점, 번들 등 관측하지 않은 요인도 포함한다.</p></article></div>
+      <div class="chart-card"><div><p class="chart-title">WEIGHT × MSRP</p><p class="chart-sub">원 크기: 최대 폴링레이트 · 색: 연결 방식</p></div><svg id="scatter" viewBox="0 0 700 300" role="img" aria-label="무게와 MSRP 산점도"></svg></div>
+    </section>
+
+    <section id="model" class="slide section">
+      <p class="eyebrow">03 / PREDICTIVE MODEL</p><h2>사양만으로 공식 가격을<br>어느 정도 설명할 수 있을까?</h2>
+      <div class="two-col model-copy"><div><p>목표변수는 MSRP다. 선형회귀(OLS)에 무게, 무선 여부, 배터리 시간, 최대 폴링레이트의 로그값을 입력했다.</p><p>아래 값은 페이지에서 데이터셋을 계산해 표시한다. 작은 표본의 탐색적 모델이므로 시장 가격 예측기가 아니라 <strong>사양과 가격의 관계를 설명하는 도구</strong>로 해석한다.</p><div class="model-metrics"><div><b id="r2">--</b><span>훈련 R²</span></div><div><b id="mae">--</b><span>훈련 MAE</span></div></div></div><div class="predictor"><p class="chart-title">PRICE ESTIMATOR</p><label>무게 <output id="weightOut">60 g</output><input id="weight" type="range" min="45" max="145" value="60"></label><label>무선 <select id="wireless"><option value="1">무선</option><option value="0">유선</option></select></label><label>배터리 시간 <output id="batteryOut">90 h</output><input id="battery" type="range" min="0" max="400" value="90"></label><label>최대 폴링레이트 <select id="polling"><option value="1000">1,000 Hz</option><option value="2000">2,000 Hz</option><option value="4000">4,000 Hz</option><option value="8000">8,000 Hz</option></select></label><div class="estimate"><span>예상 공식가</span><b id="prediction">$--</b></div></div></div>
+    </section>
+
+    <section id="experiment" class="slide section experiment">
+      <p class="eyebrow">04 / A/B EXPERIMENT DESIGN</p><h2>스펙을 말할까,<br>경험을 말할까?</h2>
+      <div class="experiment-intro"><p><strong>연구 질문:</strong> 같은 제품에서 사양 중심 설명(A)과 사용 경험 중심 설명(B) 중 어느 방식이 구매 의도를 높이는가?</p><p>무작위 배정 · 제품 이미지와 가격 동일 · 주요 결과: 1~7점 구매 의도 · 목표 표본: 조건별 최소 30명</p></div>
+      <div id="abCard" class="ab-card"><div class="assignment"><span id="conditionTag">CONDITION</span><p id="conditionNote">무작위 배정 중...</p></div><div class="preview-links">설계 미리보기: <a href="?condition=A#experiment">A 사양 중심</a><a href="?condition=B#experiment">B 경험 중심</a><a href="#experiment" id="liveExperiment">실제 무작위 배정</a></div><div class="product"><div class="mouse-icon"></div><div><p>AXIS 54</p><small>무선 게이밍 마우스 · $129</small></div></div><div id="message" class="message"></div><form id="survey"><fieldset><legend>이 제품을 구매할 의향은 어느 정도인가요?</legend><div class="scale"><span>전혀 없다</span><div id="intentButtons"></div><span>매우 높다</span></div></fieldset><label>적정하다고 생각하는 가격 (USD, 선택)<input type="number" name="fairPrice" min="0" max="500" placeholder="예: 99"></label><label>주로 하는 게임 (선택)<select name="game"><option>FPS</option><option>MOBA</option><option>RPG/MMO</option><option>캐주얼/기타</option></select></label><button type="submit">응답 제출</button><p class="privacy">이름, 이메일, IP를 저장하지 않습니다. 연구 목적의 익명 응답입니다.</p></form></div>
+      <div class="live-results"><p class="chart-title">ACTUAL EXPERIMENT STATUS · RESPONSES REQUIRED</p><div id="results">응답 현황을 불러오는 중...</div><a class="csv-link" href="/api/responses.csv">응답 CSV 내려받기 ↓</a></div>
+      <div class="review-research"><p class="chart-title">05 / EXTERNAL REVIEW RESEARCH · 6 PUBLISHED REVIEWS</p><h3>리뷰는 “최고 사양”보다 <em>사용자 적합성</em>을 반복해 말한다.</h3><div class="review-grid"><article><p class="review-product">LOGITECH G PRO X SUPERLIGHT 2</p><p>경쟁 FPS용 고급 제품으로 평가되며, 폭넓은 손 크기와 그립에 맞는 무난한 형태가 핵심 강점으로 정리된다.</p><a href="https://www.rtings.com/mouse/reviews/logitech/g-pro-x-superlight-2" target="_blank">RTINGS 원문 ↗</a></article><article><p class="review-product">RAZER VIPER V3 PRO</p><p>8,000Hz와 광학 스위치를 장점으로 제시하지만, 일반 이용자에게 측정 성능 차이가 게임 내 이점으로 크게 느껴지지 않을 수 있다고 설명한다.</p><a href="https://www.rtings.com/mouse/reviews/razer/viper-v3-pro" target="_blank">RTINGS 원문 ↗</a></article><article><p class="review-product">LOGITECH G305 LIGHTSPEED</p><p>센서와 클릭 지연 성능은 높게 평가되지만, 작은 계란형 쉐입은 큰 손에서 팜·클로 그립에 맞지 않을 수 있다는 조건을 함께 제시한다.</p><a href="https://www.rtings.com/mouse/reviews/logitech/g305-lightspeed" target="_blank">RTINGS 원문 ↗</a></article><article><p class="review-product">RAZER DEATHADDER V3 PRO</p><p>높은 성능을 제공하지만 오른손용 쉐입은 큰 손과 팜·클로 그립에 특히 적합하다고 구분한다.</p><a href="https://www.rtings.com/mouse/reviews/razer/deathadder-v3-pro" target="_blank">RTINGS 원문 ↗</a></article><article><p class="review-product">STEELSERIES AEROX 5 WIRELESS</p><p>다장르 게임과 추가 버튼이 장점이지만, 생산성 기능과 경량화 사이의 트레이드오프를 함께 설명한다.</p><a href="https://www.rtings.com/mouse/reviews/steelseries/aerox-5-wireless" target="_blank">RTINGS 원문 ↗</a></article><article><p class="review-product">HYPERX PULSEFIRE HASTE 2 WIRELESS</p><p>가벼운 무게와 가격 경쟁력을 장점으로 제시하면서도, 최상위 경쟁 게이밍 성능과는 차이가 있다고 구분한다.</p><a href="https://www.rtings.com/mouse/reviews/hyperx/pulsefire-haste-2-wireless" target="_blank">RTINGS 원문 ↗</a></article></div><div class="review-coding"><div><b>6 / 6</b><span>쉐입·그립·게임 장르 등<br>사용자 적합성 언급</span></div><div><b>6 / 6</b><span>센서·지연·무게·버튼 등<br>성능 또는 기능 언급</span></div><div><b>6 / 6</b><span>제품 선택의 조건 또는<br>트레이드오프 제시</span></div></div><p class="review-result"><strong>관찰분석 결론:</strong> 여섯 리뷰 모두 성능을 다루지만, 최종 추천은 쉐입, 손 크기, 그립, 게임 장르, 기능 간 트레이드오프를 함께 제시한다. 따라서 상품 상세페이지는 사양표만 먼저 보여주기보다, “어떤 손과 게임 플레이에 맞는가”를 병기하는 것이 타당하다는 정성 근거를 얻었다.</p><p class="review-note">수집일: 2026.11.20. 공개 전문 리뷰의 요약·패러프레이즈를 사람이 코딩한 결과다. 사용자 후기 표본, 무작위 배정, 통계적 A/B 효과가 아니며 A/B 실험 결과를 대체하지 않는다.</p></div>
+    </section>
+
+    <section class="slide section conclusion"><p class="eyebrow">06 / PROPOSAL</p><h2>“최고 사양” 대신<br><em>“나에게 맞는 이유”</em>를 제시한다.</h2><div class="proposal-grid"><article><span>01</span><h3>용도 기반 추천</h3><p>손 크기·주 게임·예산을 입력하면 무게와 형태를 우선 필터링하는 추천 도구를 제안한다.</p></article><article><span>02</span><h3>설명 방식 개인화</h3><p>실제 A/B 결과에서 우세한 설명을 기본으로 제공하되, 사양 탐색 성향 고객에게는 원시 사양표를 유지한다.</p></article><article><span>03</span><h3>검증 후 확대</h3><p>조건별 30명 이상을 모집하고, 평균 구매 의도와 신뢰구간을 확인한 뒤 상세페이지에 적용한다.</p></article></div><p class="footnote">한계: 공식 MSRP 및 소표본 분석이며, A/B 실험의 실증 결론은 실제 응답 수집 후에만 도출한다. 외부 전문 리뷰는 보조 정성 근거다.</p></section>
+  </main><footer>MOUSE/LAB · Data-driven gaming gear research</footer>
+  <script src="data.js"></script><script src="app.js"></script>
+</body></html>

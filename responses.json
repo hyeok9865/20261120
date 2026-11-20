@@ -1,0 +1,156 @@
+[
+  {
+    "condition": "B",
+    "intent": 4,
+    "fairPrice": 90,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:09:17.618Z"
+  },
+  {
+    "condition": "A",
+    "intent": 5,
+    "fairPrice": 100,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:13:46.504Z"
+  },
+  {
+    "condition": "B",
+    "intent": 6,
+    "fairPrice": 99,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:14:02.118Z"
+  },
+  {
+    "condition": "B",
+    "intent": 2,
+    "fairPrice": 70,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:14:44.886Z"
+  },
+  {
+    "condition": "A",
+    "intent": 2,
+    "fairPrice": 50,
+    "game": "RPG/MMO",
+    "createdAt": "2026-11-20T02:15:21.126Z"
+  },
+  {
+    "condition": "B",
+    "intent": 7,
+    "fairPrice": 90,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:15:40.054Z"
+  },
+  {
+    "condition": "A",
+    "intent": 6,
+    "fairPrice": 11,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:16:06.070Z"
+  },
+  {
+    "condition": "B",
+    "intent": 5,
+    "fairPrice": 100,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:16:26.605Z"
+  },
+  {
+    "condition": "A",
+    "intent": 3,
+    "fairPrice": 80,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:16:42.526Z"
+  },
+  {
+    "condition": "A",
+    "intent": 3,
+    "fairPrice": 99,
+    "game": "RPG/MMO",
+    "createdAt": "2026-11-20T02:17:04.150Z"
+  },
+  {
+    "condition": "A",
+    "intent": 5,
+    "fairPrice": 110,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:17:20.742Z"
+  },
+  {
+    "condition": "A",
+    "intent": 5,
+    "fairPrice": 99,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:17:32.965Z"
+  },
+  {
+    "condition": "A",
+    "intent": 4,
+    "fairPrice": 100,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:17:52.902Z"
+  },
+  {
+    "condition": "A",
+    "intent": 5,
+    "fairPrice": 80,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:18:06.966Z"
+  },
+  {
+    "condition": "B",
+    "intent": 7,
+    "fairPrice": 100,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:18:22.350Z"
+  },
+  {
+    "condition": "B",
+    "intent": 3,
+    "fairPrice": 70,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:18:42.758Z"
+  },
+  {
+    "condition": "A",
+    "intent": 4,
+    "fairPrice": 98,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:18:53.926Z"
+  },
+  {
+    "condition": "B",
+    "intent": 5,
+    "fairPrice": 89,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:19:09.462Z"
+  },
+  {
+    "condition": "A",
+    "intent": 4,
+    "fairPrice": 79,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:19:27.774Z"
+  },
+  {
+    "condition": "A",
+    "intent": 3,
+    "fairPrice": 69,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:19:48.669Z"
+  },
+  {
+    "condition": "B",
+    "intent": 7,
+    "fairPrice": 109,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:20:18.678Z"
+  },
+  {
+    "condition": "B",
+    "intent": 6,
+    "fairPrice": 100,
+    "game": "FPS",
+    "createdAt": "2026-11-20T02:22:50.166Z"
+  }
+]
